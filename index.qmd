@@ -1,0 +1,32 @@
+---
+title: "Overview: Social Network Analysis (0HV80)"
+author: "Gerrit Rooks"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+    number_sections: true
+code_download: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, message=FALSE}
+library(igraph) 
+library(tidyverse)
+```
+
+These notes accompany the social network analysis part of the 0HV80 course and provide an overview of the basic skills needed to network data into informative summaries and visualizations presented in professional reports and presentations. The notes will introduce learners to the R packages `igraph` and `netdiffuseR`). The notes will cover importing and processing data from spreadsheets, producing data summaries of the network, creating beautiful and informative visualizations, and simulating network diffusion. In addition to the technical aspects of social network analysis, the notes provide additional theoretical background and mechanisms that help understanding how networks "work".
+
+By the end of these notes, you will be able to use R to:
+
+- create networks
+- import networks 
+- clean and process data
+- informatively visualize networks
+- calculate differences in network position 
+- calculate cohesion measures
+- simulate network diffusion 

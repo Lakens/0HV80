@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.310">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="description" content="Book Description">
+<title>Book Template - 2&nbsp; Social computing using R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./2.html" rel="next">
+<link href="./index.html" rel="prev">
+<link href="./images/logos/logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/glossary.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Social computing using R</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Book Template</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Book-Template.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Book-Template.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+</div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=%7Curl%7C">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=%7Curl%7C">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=%7Curl%7C">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+</div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview: Social Network Analysis (0HV80)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Social computing using R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Social network basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inequality and network position</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Social Cohesion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rationalization: Diffusion networks</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#a-tutorial-in-r-swirl" id="toc-a-tutorial-in-r-swirl" class="nav-link active" data-scroll-target="#a-tutorial-in-r-swirl"><span class="header-section-number">2.1</span> A tutorial in R: Swirl</a></li>
+  <li>
+<a href="#defining-network-objects" id="toc-defining-network-objects" class="nav-link" data-scroll-target="#defining-network-objects"><span class="header-section-number">2.2</span> Defining network objects</a>
+  <ul class="collapse">
+<li><a href="#the-graph-command" id="toc-the-graph-command" class="nav-link" data-scroll-target="#the-graph-command"><span class="header-section-number">2.2.1</span> the graph command</a></li>
+  <li><a href="#the-graph_from_literal-command" id="toc-the-graph_from_literal-command" class="nav-link" data-scroll-target="#the-graph_from_literal-command"><span class="header-section-number">2.2.2</span> the graph_from_literal command</a></li>
+  <li><a href="#adding-attributes-to-a-graph" id="toc-adding-attributes-to-a-graph" class="nav-link" data-scroll-target="#adding-attributes-to-a-graph"><span class="header-section-number">2.2.3</span> Adding attributes to a graph</a></li>
+  </ul>
+</li>
+  <li><a href="#examing-network-data" id="toc-examing-network-data" class="nav-link" data-scroll-target="#examing-network-data"><span class="header-section-number">2.3</span> Examing network data</a></li>
+  <li><a href="#reading-edge-list-data" id="toc-reading-edge-list-data" class="nav-link" data-scroll-target="#reading-edge-list-data"><span class="header-section-number">2.4</span> Reading edge list data</a></li>
+  <li><a href="#reading-adjacency-matrices" id="toc-reading-adjacency-matrices" class="nav-link" data-scroll-target="#reading-adjacency-matrices"><span class="header-section-number">2.5</span> Reading adjacency matrices</a></li>
+  <li><a href="#reading-two-mode-data" id="toc-reading-two-mode-data" class="nav-link" data-scroll-target="#reading-two-mode-data"><span class="header-section-number">2.6</span> Reading two mode data</a></li>
+  <li>
+<a href="#selecting-subgraphs" id="toc-selecting-subgraphs" class="nav-link" data-scroll-target="#selecting-subgraphs"><span class="header-section-number">2.7</span> Selecting subgraphs</a>
+  <ul class="collapse">
+<li><a href="#filtering-based-on-node-values" id="toc-filtering-based-on-node-values" class="nav-link" data-scroll-target="#filtering-based-on-node-values"><span class="header-section-number">2.7.1</span> filtering based on node values</a></li>
+  <li><a href="#filtering-based-on-edge-values" id="toc-filtering-based-on-edge-values" class="nav-link" data-scroll-target="#filtering-based-on-edge-values"><span class="header-section-number">2.7.2</span> Filtering Based on Edge Values</a></li>
+  <li><a href="#removing-isolates" id="toc-removing-isolates" class="nav-link" data-scroll-target="#removing-isolates"><span class="header-section-number">2.7.3</span> removing isolates</a></li>
+  </ul>
+</li>
+  <li><a href="#exercise-part-one" id="toc-exercise-part-one" class="nav-link" data-scroll-target="#exercise-part-one"><span class="header-section-number">2.8</span> Exercise part one</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Social computing using R</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><p>This part will introduce you to R and the `igraph’ package.</p>
+<p>Intended Learning Outcomes:</p>
+<ul>
+<li>install R and Rstudio</li>
+<li>define network objects</li>
+<li>inspect network objects</li>
+<li>read network data</li>
+<li>select sub-networks</li>
+</ul>
+<p>R is an ideal platform for developing and conducting network analyses. The R statistical programming language and environment comprise a vast integrated system of thousands of packages and functions that allow it to handle innumerable data management, analysis, or visualization tasks.</p>
+<p>The R system includes a number of packages that are designed to accomplish specific network analytic tasks.However, by performing these network tasks within the R environment, the analyst can take advantage of any of the other capabilities of R. Most other network analysis programs (e.g., Pajek, UCINet, Gephi) are stand-alone packages, and thus do not have the advantages of working within an integrated statistical programming environment. See for a comparison of various network tools</p>
+<p>https://sci2s.ugr.es/sites/default/files/files/Teaching/GraduatesCourses/RedesSistemasCompejos/wias_2010-Comparativa-SNA-tools.pdf</p>
+<p>By pairing R up with an integrated development environment (IDE) such as RStudio and taking advantage of packages such as knitr and shiny, the user has the ability to manage any type of complex network project. In fact, the development and availability of these tools has been one of the driving forces of the reproducible research movement, which emphasizes the importance of combining data, code, results, and documentation in permanent and shareable forms.</p>
+<p>There are various network analysis packages available in R. Basic network analysis and visualization can be handled with the <code>sna</code> package contained within the much broader <code>statnet</code> suite of network packages. Sophisticated modeling of network dynamics can be handled by <code>ergm</code> and its associated libraries, and dynamic actor-based network models are produced by <code>RSiena</code>.</p>
+<p>Being open source, users from around the world add new functions to its repositories on a daily basis. This means that the possible tools you can use and analyses you can perform with R are expanding constantly, making it an increasingly powerful environment for statistical analysis. We will show you just a glimpse of this power, but hopefully we can provide enough of a basis for you to go out on your own and learn more. In the course we will make use of R to visualize networks and perform network analysis.</p>
+<p>If you have not already done so, install R and Rstudio. First install R, you can find it on the “Comprehensive R Archive Network:</p>
+<p>https://cran.r-project.org/.</p>
+<p>Then, install R studio, which makes life so much easier:</p>
+<p>https://www.rstudio.com/products/rstudio/download/.</p>
+<p>The best way to learn the necessary basics of R is to use the swirl R package, an interactive, easy way to learn R programming in the R environment.</p>
+<section id="a-tutorial-in-r-swirl" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="a-tutorial-in-r-swirl">
+<span class="header-section-number">2.1</span> A tutorial in R: Swirl</h2>
+<p>I assume that you installed R and RStudio. Open RStudio and type the following into the console.</p>
+<p><code>install.packages("swirl")</code></p>
+<p>Note that the &gt; symbol at the beginning of the line is R’s prompt for you type something into the console. We include it here so you know that this command is to be typed into the console and not elsewhere. The part you type begins after “&gt;”.</p>
+<p>Starting swirl is the only step that you will repeat every time you want to run swirl. First, you will load the package using the library() function. Then you will call the function that starts the magic! Type the following, pressing Enter (or Ctrl + Enter on my machine) after each line:</p>
+<p><code><a href="http://swirlstats.com">library("swirl")</a></code></p>
+<p><code>swirl()</code></p>
+<p>The last step is to install an interactive course, and follow it. The first time you start swirl, you’ll be prompted to install a course. You can either install one of the recommended courses or visit our course repository for more options. There are even more courses available from the Swirl Course Network.</p>
+<p>If you’d like to install a course that is not part of our course repository, type</p>
+<p><code>?InstallCourses</code></p>
+<p>at the R prompt for a list of functions that will help you do so. The best course to start if you are an absolute beginner in R is the very short introduction to R by Claudia Brauer. Run the following code in your R console.</p>
+<p><code>swirl::install_course("A_(very)_short_introduction_to_R")</code></p>
+<p>After swirl() you can select the course and its modules. Complete the course, and you will have no trouble following the course SNA in R (at least not with the R part!).</p>
+</section><section id="defining-network-objects" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="defining-network-objects">
+<span class="header-section-number">2.2</span> Defining network objects</h2>
+<p>A major advantage of using R for network analysis is the power and flexibility of the tools for accessing and manipulating the actual network data. In this section we will learn how to create network data objects. In a next section we discuss how network from existing data sources can be entered into R and turned into a network data object. Finally, a number of typical network data management tasks are illustrated.</p>
+<p>Install the latest version of the package “igraph”.</p>
+<p><code>install.packages("igraph")</code></p>
+<p>Note that igraph should be started via <code><a href="https://r.igraph.org/">library(igraph)</a></code> while this is always needed in the remainder, I will not display it in the code as to reduce the output.</p>
+<section id="the-graph-command" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="the-graph-command">
+<span class="header-section-number">2.2.1</span> the graph command</h3>
+<p>The way that graphs are created, stored and manipulated in R bears a strong resemblance to how they are defined and studied algebraically. A graph <span class="math inline">\(G\)</span> consists of two sets. The first set <span class="math inline">\(V\)</span> is known as the vertex set or node set. The second set <span class="math inline">\(E\)</span> is known as the edge set, and consists of pairs of elements of <span class="math inline">\(V\)</span>. Given that a graph is made up of these two sets, we will often notate our graph as <span class="math inline">\(G=(V,E)\)</span>. If two vertices appear as a pair in <span class="math inline">\(E\)</span>, then those vertices are said to be adjacent or connected vertices.</p>
+<p>Let’s use an example to illustrate this definition. The Figure below is a diagram of a graph <span class="math inline">\(G_{HTI}\)</span> with four vertices representing four professors of our HTI department. An edge connects two vertices if and only if those two people have closely worked together.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>G <span class="ot">&lt;-</span> <span class="fu">graph</span>(<span class="at">edges=</span><span class="fu">c</span>(<span class="st">"Uwe"</span>,<span class="st">"Gerrit"</span>,<span class="st">"Uwe"</span>, <span class="st">"Rianne"</span>,<span class="st">"Gerrit"</span>,<span class="st">"Martijn"</span>,<span class="st">"Rianne"</span>,<span class="st">"Martijn"</span>), <span class="at">directed=</span> F) </span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># A simple plot of the network - we'll talk more about plots later</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">plot</span>(G, <span class="at">asp=</span><span class="fl">0.6</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Our vertex set <span class="math inline">\(V\)</span> for the graph <span class="math inline">\(G_{HTI}\)</span> is is:</p>
+<p><span class="math inline">\(V=\{Uwe, Gerrit, Rianne, Martijn\}\)</span>.</p>
+<p>The edge set is defined as pairs of elements of the vertex set.</p>
+<p><span class="math inline">\(E=\{\{Uwe, Gerrit\},\{Uwe,Rianne\},\{Gerrit,Martijn\},\{Rianne,Martijn\}\}\)</span></p>
+<p>In the <code>graph</code> command above, we specified that the graph is undirected (“directed=F”). This makes sense obviously, since if Uwe works closely with Gerrit, Gerrit works closely with Uwe. If we do not specify that the graph is undirected, igraph by default assumes that edges are directed (indicating for instance a “x likes y” relationship). As can be verified in the Figure the order of the vertices in the pairs matters.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>G <span class="ot">&lt;-</span> <span class="fu">graph</span>(<span class="at">edges=</span><span class="fu">c</span>(<span class="st">"Uwe"</span>,<span class="st">"Gerrit"</span>,<span class="st">"Uwe"</span>, <span class="st">"Rianne"</span>,<span class="st">"Gerrit"</span>,<span class="st">"Martijn"</span>,<span class="st">"Rianne"</span>,<span class="st">"Martijn"</span>)) </span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">plot</span>(G, <span class="at">asp=</span><span class="fl">0.6</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>There are various ways of creating a network graph in Igraph. The <code>graph</code> command is straightforward. The <code>graph</code> function allows to add isolated vertices. Isolates do not have connections to other vertices, so adding them increases the vertex set, but not the edge set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>g3 <span class="ot">&lt;-</span> <span class="fu">graph</span>(<span class="at">edges=</span><span class="fu">c</span>(<span class="st">"Uwe"</span>,<span class="st">"Gerrit"</span>,<span class="st">"Uwe"</span>, <span class="st">"Rianne"</span>,<span class="st">"Gerrit"</span>,<span class="st">"Martijn"</span>,<span class="st">"Rianne"</span>,<span class="st">"Martijn"</span>),<span class="at">isolates=</span><span class="fu">c</span>(<span class="st">"Sanne"</span>, <span class="st">"Peter"</span>),  <span class="at">directed=</span> F) </span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">plot</span>(g3, <span class="at">asp=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The graph above is a so-called <strong>simple graph</strong> since there are no multiple relations between vertices. In a <strong>multiple graph</strong> this is allowed. An example could be a combination of “x manages y” and “x likes y” relations. Multiple graphs are not common in social network analysis (we will not further discuss them in this course).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>multi_graph <span class="ot">&lt;-</span> <span class="fu">graph</span>(<span class="at">edges=</span><span class="fu">c</span>(<span class="st">"Uwe"</span>,<span class="st">"Gerrit"</span>,<span class="st">"Uwe"</span>, <span class="st">"Rianne"</span>, <span class="st">"Uwe"</span>, <span class="st">"Rianne"</span>, <span class="st">"Gerrit"</span>,<span class="st">"Martijn"</span>,<span class="st">"Rianne"</span>,<span class="st">"Martijn"</span>)) </span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">plot</span>(multi_graph, <span class="at">asp=</span><span class="fl">0.6</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In a <strong>pseudo graph</strong> vertices are allowed to connect to themselves (self-loops). This can for instance happen in a “x emails y” network relation, since we can send ourselves an email. In practice (and in our course) self-loops (and pseudo graphs) are not of interest in social network analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>pseudo_graph <span class="ot">&lt;-</span> <span class="fu">graph</span>(<span class="at">edges=</span><span class="fu">c</span>(<span class="st">"Uwe"</span>,<span class="st">"Uwe"</span>,<span class="st">"Uwe"</span>,<span class="st">"Gerrit"</span>,<span class="st">"Uwe"</span>, <span class="st">"Rianne"</span>,<span class="st">"Gerrit"</span>,<span class="st">"Martijn"</span>,<span class="st">"Rianne"</span>,<span class="st">"Martijn"</span>)) </span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">plot</span>(pseudo_graph, <span class="at">asp=</span><span class="fl">0.6</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section><section id="the-graph_from_literal-command" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="the-graph_from_literal-command">
+<span class="header-section-number">2.2.2</span> the graph_from_literal command</h3>
+<p>An somewhat easier alternative to the graph command is the graph_from_literal command. It uses more intuitive symbols for relations: ‘-’ for undirected tie, “+-’ or”-+” for directed ties pointing left &amp; right, “++” for a symmetric tie, and “:” for sets of vertices</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">plot</span>(<span class="fu">graph_from_literal</span>(a<span class="sc">---</span>b, b<span class="sc">---</span>c), <span class="at">asp=</span><span class="fl">0.6</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">plot</span>(<span class="fu">graph_from_literal</span>(a<span class="sc">+-+</span>b, b<span class="sc">+--</span>c), <span class="at">asp=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The ‘:’ operator can be used to define vertex sets. If an edge operator connects two vertex sets then every vertex from the first set will be connected to every vertex in the second set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">plot</span>(<span class="fu">graph_from_literal</span>(Alice <span class="sc">-</span> Bob<span class="sc">:</span>Cecil<span class="sc">:</span>Daniel, Cecil<span class="sc">:</span>Daniel <span class="sc">-</span> Eugene<span class="sc">:</span>Gordon))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section><section id="adding-attributes-to-a-graph" class="level3" data-number="2.2.3"><h3 data-number="2.2.3" class="anchored" data-anchor-id="adding-attributes-to-a-graph">
+<span class="header-section-number">2.2.3</span> Adding attributes to a graph</h3>
+<p>A graph <span class="math inline">\(G=(V,E)\)</span> consists of a vertex set <span class="math inline">\(V\)</span> and an edge set <span class="math inline">\(E\)</span>. These sets are the minimum elements of a graph—the vertices represent the entities in the graph and the edges represent the relationships between the entities. We can enhance a graph to provide even richer information on the entities and on the relationships by giving our vertices and edges properties. A vertex property provides more specific information about a vertex and an edge property provides more specific information about the relationship between two vertices.</p>
+<p>We could for instance include the gender attribute. We can notate properties as additional sets in our graph, ensuring that each entry is in the same order as the respective vertices or edges, as follows:</p>
+<p><span class="math inline">\(V=\{Uwe, Gerrit, Rianne, Martijn\}\)</span>.</p>
+<p><span class="math inline">\(V_{gender}=\{male, male, female, male\}\)</span>.</p>
+<p>Note that the vertex property set <span class="math inline">\(V_{gender}\)</span> has the same number of elements as <span class="math inline">\(V\)</span> and the associated properties appear in the same order as the vertices of <span class="math inline">\(V\)</span>’. Vertex and edge properties can be added to a new graph at the point of creation or can be added progressively to an existing graph. We will first focus on adding them to an existing graph object in igraph.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># First note that the vertex set can be easily accessed. </span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">V</span>(G)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+ 4/4 vertices, named, from 2c04b06:
+[1] Uwe     Gerrit  Rianne  Martijn</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#Second the names are stored automatically, and can be accessed as well.</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">V</span>(G)<span class="sc">$</span>name </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Uwe"     "Gerrit"  "Rianne"  "Martijn"</code></pre>
+</div>
+</div>
+<p>The $ operator is used to extract or subset a specific part of a data object in R. For instance, this can be a data frame object or a list. We can use this operator to add a vertex attribute to the igraph object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># note that the c() function creates a vector .</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">V</span>(G)<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The procedure in igraph is similar for edge attributes. Here we include an edge attribute “type of relation”. Again we must make sure that each entry is in the same order as the respective edges:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">E</span>(G)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+ 4/4 edges from 2c04b06 (vertex names):
+[1] Uwe   -&gt;Gerrit  Uwe   -&gt;Rianne  Gerrit-&gt;Martijn Rianne-&gt;Martijn</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">E</span>(G)<span class="sc">$</span>type<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"work"</span>,<span class="st">"personal"</span>, <span class="st">"work"</span>, <span class="st">"work"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">plot</span>(G, <span class="at">edge.label=</span><span class="fu">E</span>(G)<span class="sc">$</span>type, <span class="at">asp=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In the example above the edges were provided with a categorical label. Edges can have (continuous) weights as well. A well known example are communication networks, where the weight indicates the interaction frequency. Networks where relations have weights are called <strong>weighted networks</strong>. For instance, suppose that in the <span class="math inline">\(G\)</span> network we are now interested in how often HTI members send emails to each other (monthly).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>G <span class="ot">&lt;-</span> <span class="fu">graph</span>(<span class="at">edges=</span><span class="fu">c</span>(<span class="st">"Uwe"</span>,<span class="st">"Gerrit"</span>, <span class="st">"Gerrit"</span>, <span class="st">"Uwe"</span>,<span class="st">"Uwe"</span>, <span class="st">"Rianne"</span>, <span class="st">"Rianne"</span>, <span class="st">"Uwe"</span>, <span class="st">"Gerrit"</span>,<span class="st">"Martijn"</span>, <span class="st">"Martijn"</span>, <span class="st">"Gerrit"</span>, <span class="st">"Rianne"</span>,<span class="st">"Martijn"</span>,<span class="st">"Martijn"</span>, <span class="st">"Rianne"</span>)) </span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">E</span>(G)<span class="sc">$</span>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">11</span>,<span class="dv">21</span>,<span class="dv">13</span>, <span class="dv">33</span>,<span class="dv">2</span>,<span class="dv">21</span>, <span class="dv">15</span>) </span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="fu">plot</span>(G, <span class="at">edge.label=</span><span class="fu">E</span>(G)<span class="sc">$</span>weight, <span class="at">asp=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section></section><section id="examing-network-data" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="examing-network-data">
+<span class="header-section-number">2.3</span> Examing network data</h2>
+<p>Whether you import a network (more about that later), or create a network (like above), it is always a good idea to inspect the network and explore whether data entry mistakes or other mistakes were made (just like in normal data analysis practice). When we visually inspect the plot of g3 earlier we can see it has two edges going from Jim to Jack, and a loop from John to himself.</p>
+<p>For larger networks this is, not always easy to see. An easy command that answers whether there are multiple links between vertices, or self-loops is the <code>is.simple</code> command.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>G <span class="ot">&lt;-</span> <span class="fu">graph</span>(<span class="at">edges=</span><span class="fu">c</span>(<span class="st">"Uwe"</span>,<span class="st">"Gerrit"</span>, <span class="st">"Gerrit"</span>, <span class="st">"Gerrit"</span>, <span class="st">"Uwe"</span>, <span class="st">"Rianne"</span>, <span class="st">"Uwe"</span>, <span class="st">"Rianne"</span>, <span class="st">"Gerrit"</span>,<span class="st">"Martijn"</span>,<span class="st">"Rianne"</span>,<span class="st">"Martijn"</span>), <span class="at">directed=</span> F) </span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">plot</span>(G, <span class="at">asp=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">is.simple</span>(G)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>You may want to know which relations are multiple or self-loops. Relation number two is the self-loop, and relation number five is the multiple relation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">E</span>(G)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+ 6/6 edges from 2d0bc32 (vertex names):
+[1] Uwe   --Gerrit  Gerrit--Gerrit  Uwe   --Rianne  Uwe   --Rianne 
+[5] Gerrit--Martijn Rianne--Martijn</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">which_loop</span>(G)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE FALSE FALSE FALSE FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">which_multiple</span>(G)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE FALSE  TRUE FALSE FALSE</code></pre>
+</div>
+</div>
+<p>We can simplify our graph to remove loops &amp; multiple edges between the same nodes using the simplify command (default is that you remove multiple edges and self-loops, but this can be adjusted).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>sG<span class="ot">&lt;-</span>igraph<span class="sc">::</span><span class="fu">simplify</span>(G)</span>
+<span id="cb27-2"><a href="#cb27-2"></a>sG[] <span class="co">#inspect the matrix (dots are zeros)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4 x 4 sparse Matrix of class "dgCMatrix"
+        Uwe Gerrit Rianne Martijn
+Uwe       .      1      1       .
+Gerrit    1      .      .       1
+Rianne    1      .      .       1
+Martijn   .      1      1       .</code></pre>
+</div>
+</div>
+<p>You can inspect the edges and vertices of a network, and inspect the network as a whole or specific rows, columns, or cells as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>sG[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Uwe  Gerrit  Rianne Martijn 
+      0       1       1       0 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>sG[<span class="dv">1</span>,<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">edge_attr</span>(sG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>named list()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">vertex_attr</span>(sG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$name
+[1] "Uwe"     "Gerrit"  "Rianne"  "Martijn"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">graph_attr</span>(sG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>named list()</code></pre>
+</div>
+</div>
+<p>We will discuss three main ways of entering network data: edgelist data, adjance matrices, and two mode network data.</p>
+</section><section id="reading-edge-list-data" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="reading-edge-list-data">
+<span class="header-section-number">2.4</span> Reading edge list data</h2>
+<p>One simple way to represent a graph is to list the edges, which we will refer to as an edge list. For each edge, we just list who that edge is incident on. Edge lists are therefore two column matrices that directly tell the computer which actors are tied for each edge. In a directed graph, the actors in column A are the sources of edges, and the actors in Column B receive the tie. In an undirected graph, order doesn’t matter.</p>
+<p>In R, we can create an example edge list using vectors and data.frames. I specify each column of the edge list with vectors and then assign them as the columns of a data.frame. We can use this to visualize what an edge list should look like.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>personA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Mark"</span>, <span class="st">"Mark"</span>, <span class="st">"Peter"</span>, <span class="st">"Peter"</span>, <span class="st">"Bob"</span>, <span class="st">"Jill"</span>)</span>
+<span id="cb39-2"><a href="#cb39-2"></a>personB <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Peter"</span>, <span class="st">"Jill"</span>, <span class="st">"Bob"</span>, <span class="st">"Aaron"</span>, <span class="st">"Jill"</span>, <span class="st">"Aaron"</span>)</span>
+<span id="cb39-3"><a href="#cb39-3"></a></span>
+<span id="cb39-4"><a href="#cb39-4"></a>edgelist <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">PersonA =</span> personA, <span class="at">PersonB =</span> personB, <span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb39-5"><a href="#cb39-5"></a></span>
+<span id="cb39-6"><a href="#cb39-6"></a><span class="fu">print</span>(edgelist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  PersonA PersonB
+1    Mark   Peter
+2    Mark    Jill
+3   Peter     Bob
+4   Peter   Aaron
+5     Bob    Jill
+6    Jill   Aaron</code></pre>
+</div>
+</div>
+<p>There are at least two ways to read edge list data. The example that is shown here use the <code>graph_from_data_frame</code> command. A simpler command <code>graph.edgelist</code> can be used if the data only contains two columns (edges from to).</p>
+<p>The data set we are using as an example consists of two files, <code>Dataset1-Media-Example- NODES.csv</code> and <code>Dataset1-Media-Example-EDGES.csv</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>nodes<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"data/Dataset1-Media-Example-NODES.csv"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2"></a>links<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"data/Dataset1-Media-Example-EDGES.csv"</span>)</span>
+<span id="cb41-3"><a href="#cb41-3"></a></span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="fu">head</span>(nodes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">media</th>
+<th style="text-align: right;">media.type</th>
+<th style="text-align: left;">type.label</th>
+<th style="text-align: right;">audience.size</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">NY Times</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s02</td>
+<td style="text-align: left;">Washington Post</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">Wall Street Journal</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s04</td>
+<td style="text-align: left;">USA Today</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s05</td>
+<td style="text-align: left;">LA Times</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s06</td>
+<td style="text-align: left;">New York Post</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">50</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">head</span>(links)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">from</th>
+<th style="text-align: left;">to</th>
+<th style="text-align: right;">weight</th>
+<th style="text-align: left;">type</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">s02</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">hyperlink</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">s02</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">hyperlink</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">s03</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">hyperlink</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">s04</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">hyperlink</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s04</td>
+<td style="text-align: left;">s11</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">mention</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s05</td>
+<td style="text-align: left;">s15</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">mention</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Next we will convert the raw data to an igraph network object. To do that, we will use the <code>graph_from_data_frame()</code> function, which takes two data frames: d and vertices.</p>
+<p>• <strong>d</strong> describes the edges of the network. Its first two columns are the IDs of the source and the target node for each edge. The following columns are edge attributes (weight, type, label, or anything else).</p>
+<p>• <strong>vertices</strong> starts with a column of node IDs. Any following columns are interpreted as node attributes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>net <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(<span class="at">d=</span>links, <span class="at">vertices=</span>nodes, <span class="at">directed=</span>T)</span>
+<span id="cb43-2"><a href="#cb43-2"></a>net</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>IGRAPH 2e966d8 DNW- 17 52 -- 
++ attr: name (v/c), media (v/c), media.type (v/n), type.label (v/c),
+| audience.size (v/n), weight (e/n), type (e/c)
++ edges from 2e966d8 (vertex names):
+ [1] s01-&gt;s02 s01-&gt;s02 s01-&gt;s03 s01-&gt;s04 s04-&gt;s11 s05-&gt;s15 s06-&gt;s17 s08-&gt;s09
+ [9] s08-&gt;s09 s03-&gt;s04 s04-&gt;s03 s01-&gt;s15 s15-&gt;s01 s15-&gt;s01 s16-&gt;s17 s16-&gt;s06
+[17] s06-&gt;s16 s09-&gt;s10 s08-&gt;s07 s07-&gt;s08 s07-&gt;s10 s05-&gt;s02 s02-&gt;s03 s02-&gt;s01
+[25] s03-&gt;s01 s12-&gt;s13 s12-&gt;s14 s14-&gt;s13 s13-&gt;s12 s05-&gt;s09 s02-&gt;s10 s03-&gt;s12
+[33] s04-&gt;s06 s10-&gt;s03 s03-&gt;s10 s04-&gt;s12 s13-&gt;s17 s06-&gt;s06 s14-&gt;s11 s03-&gt;s11
+[41] s12-&gt;s06 s04-&gt;s17 s17-&gt;s04 s08-&gt;s03 s03-&gt;s08 s07-&gt;s14 s15-&gt;s06 s15-&gt;s04
+[49] s05-&gt;s01 s02-&gt;s09 s03-&gt;s05 s07-&gt;s03</code></pre>
+</div>
+</div>
+<p>Above we already briefly discussed this description. The description of an igraph object starts with four letters:</p>
+<ol type="1">
+<li><p>D or U, for a directed or undirected graph</p></li>
+<li><p>N for a named graph (where nodes have a name attribute)</p></li>
+<li><p>W for a weighted graph (where edges have a weight attribute)</p></li>
+<li><p>B for a bipartite (two-mode) graph (where nodes have a type attribute)</p></li>
+</ol>
+<p>The two numbers that follow (17 52) refer to the number of nodes and edges in the graph. The description also lists node &amp; edge attributes, for example:</p>
+<ul>
+<li><p>(g/c) graph-level character attribute.</p></li>
+<li><p>(v/c) vertex-level character attribute. So “name” is a vertex level attribute. The c indicates that this attribute is a character object, which is used to represent string values in R.</p></li>
+<li><p>(e/n) edge-level numeric attribute. The “weight” edge attribute refers to how often one media source refers to another (and hence is numerical)</p></li>
+</ul>
+<p>We have easy access to nodes, edges, and their attributes with the following code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">E</span>(net) <span class="co"># The edges of the "net" object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+ 52/52 edges from 2e966d8 (vertex names):
+ [1] s01-&gt;s02 s01-&gt;s02 s01-&gt;s03 s01-&gt;s04 s04-&gt;s11 s05-&gt;s15 s06-&gt;s17 s08-&gt;s09
+ [9] s08-&gt;s09 s03-&gt;s04 s04-&gt;s03 s01-&gt;s15 s15-&gt;s01 s15-&gt;s01 s16-&gt;s17 s16-&gt;s06
+[17] s06-&gt;s16 s09-&gt;s10 s08-&gt;s07 s07-&gt;s08 s07-&gt;s10 s05-&gt;s02 s02-&gt;s03 s02-&gt;s01
+[25] s03-&gt;s01 s12-&gt;s13 s12-&gt;s14 s14-&gt;s13 s13-&gt;s12 s05-&gt;s09 s02-&gt;s10 s03-&gt;s12
+[33] s04-&gt;s06 s10-&gt;s03 s03-&gt;s10 s04-&gt;s12 s13-&gt;s17 s06-&gt;s06 s14-&gt;s11 s03-&gt;s11
+[41] s12-&gt;s06 s04-&gt;s17 s17-&gt;s04 s08-&gt;s03 s03-&gt;s08 s07-&gt;s14 s15-&gt;s06 s15-&gt;s04
+[49] s05-&gt;s01 s02-&gt;s09 s03-&gt;s05 s07-&gt;s03</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">V</span>(net) <span class="co"># The vertices of the "net" object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+ 17/17 vertices, named, from 2e966d8:
+ [1] s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 s12 s13 s14 s15 s16 s17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">E</span>(net)<span class="sc">$</span>type <span class="co"># Edge attribute "type"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "hyperlink" "hyperlink" "hyperlink" "hyperlink" "mention"   "mention"  
+ [7] "mention"   "mention"   "mention"   "hyperlink" "hyperlink" "mention"  
+[13] "hyperlink" "hyperlink" "mention"   "hyperlink" "hyperlink" "mention"  
+[19] "mention"   "mention"   "hyperlink" "hyperlink" "hyperlink" "hyperlink"
+[25] "hyperlink" "hyperlink" "mention"   "mention"   "hyperlink" "hyperlink"
+[31] "hyperlink" "hyperlink" "mention"   "hyperlink" "mention"   "hyperlink"
+[37] "mention"   "hyperlink" "mention"   "hyperlink" "mention"   "mention"  
+[43] "hyperlink" "hyperlink" "hyperlink" "mention"   "hyperlink" "hyperlink"
+[49] "mention"   "hyperlink" "hyperlink" "mention"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">V</span>(net)<span class="sc">$</span>media <span class="co"># Vertex attribute "media"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "NY Times"            "Washington Post"     "Wall Street Journal"
+ [4] "USA Today"           "LA Times"            "New York Post"      
+ [7] "CNN"                 "MSNBC"               "FOX News"           
+[10] "ABC"                 "BBC"                 "Yahoo News"         
+[13] "Google News"         "Reuters.com"         "NYTimes.com"        
+[16] "WashingtonPost.com"  "AOL.com"            </code></pre>
+</div>
+</div>
+<p>You can also find nodes and edges using attribute information. This can be useful when we want to color vertices and edges.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">V</span>(net)[media<span class="sc">==</span><span class="st">"BBC"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+ 1/17 vertex, named, from 2e966d8:
+[1] s11</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">E</span>(net)[type<span class="sc">==</span><span class="st">"mention"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+ 21/52 edges from 2e966d8 (vertex names):
+ [1] s04-&gt;s11 s05-&gt;s15 s06-&gt;s17 s08-&gt;s09 s08-&gt;s09 s01-&gt;s15 s16-&gt;s17 s09-&gt;s10
+ [9] s08-&gt;s07 s07-&gt;s08 s12-&gt;s14 s14-&gt;s13 s04-&gt;s06 s03-&gt;s10 s13-&gt;s17 s14-&gt;s11
+[17] s12-&gt;s06 s04-&gt;s17 s07-&gt;s14 s05-&gt;s01 s07-&gt;s03</code></pre>
+</div>
+</div>
+<p>Similar to the analysis of regular data, inspecting and exploring your data to check if there are errors is a must. A first step is to check whether there are multiple relations between vertices or whether there are so-called self-loops, in which case a vertex is connected to itself (which is most often not the case). The <code>is.simple</code> command indicates whether there are multiple relations or self-loops. The <code>which_multiple</code> and `which_loop’ functions return which relations are loops or multiple.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">plot</span>(net,<span class="at">vertex.size=</span><span class="dv">8</span>, <span class="at">edge.arrow.size=</span><span class="fl">0.2</span>, <span class="at">asp=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">is.simple</span>(net)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">which_multiple</span>(net)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+[13] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[49] FALSE FALSE FALSE FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">which_loop</span>(net)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[37] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[49] FALSE FALSE FALSE FALSE</code></pre>
+</div>
+</div>
+<p>Remove the multiple edges and self-loops.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>net<span class="ot">&lt;-</span>igraph<span class="sc">::</span><span class="fu">simplify</span>(net, <span class="at">edge.attr.comb =</span> <span class="st">"first"</span>)</span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="fu">plot</span>(net,<span class="at">vertex.size=</span><span class="dv">8</span>, <span class="at">edge.arrow.size=</span><span class="fl">0.2</span>, <span class="at">asp=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="fu">is.simple</span>(net)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section><section id="reading-adjacency-matrices" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="reading-adjacency-matrices">
+<span class="header-section-number">2.5</span> Reading adjacency matrices</h2>
+<p>Adjacency matrices have one row and one column for each actor in the network. The elements of the matrix can be any number but in most networks, will be either 0 or 1. A matrix element of 1 (or greater) signals that the respective column actor and row actor should be tied in the network. Zero signals that they are not tied.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>adjacency <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Mark"</span>, <span class="st">"Peter"</span>, <span class="st">"Bob"</span>, <span class="st">"Jill"</span>, <span class="st">"Aaron"</span>), <span class="fu">c</span>(<span class="st">"Mark"</span>, <span class="st">"Peter"</span>, <span class="st">"Bob"</span>, <span class="st">"Jill"</span>, <span class="st">"Aaron"</span>)))</span>
+<span id="cb67-2"><a href="#cb67-2"></a></span>
+<span id="cb67-3"><a href="#cb67-3"></a><span class="fu">print</span>(adjacency)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Mark Peter Bob Jill Aaron
+Mark     0     1   0    1     0
+Peter    1     0   1    0     1
+Bob      0     1   0    1     0
+Jill     1     0   1    0     1
+Aaron    0     1   0    1     0</code></pre>
+</div>
+</div>
+<p>Here is an example of how to read adjancency matrices. These data are from a well-known series of studies by David Krackhardt of a small company.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>Initial.matrix <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/Krack-High-Tec-Advise-edges.csv"</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">row.names=</span><span class="dv">1</span>, <span class="at">na.strings =</span> <span class="st">""</span>)</span>
+<span id="cb69-2"><a href="#cb69-2"></a>matrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(Initial.matrix) </span>
+<span id="cb69-3"><a href="#cb69-3"></a>advise <span class="ot">&lt;-</span> <span class="fu">graph.adjacency</span>(matrix, <span class="at">mode=</span><span class="st">"directed"</span>, <span class="at">weighted=</span><span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we need to add the attribute data to the matrix. First read the information:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>nodes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/Krackh-High-Tec-nodes.csv"</span>, <span class="at">header=</span>T, <span class="at">as.is=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After reading the data, add it to the advise Igraph object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">V</span>(advise)<span class="sc">$</span>age    <span class="ot">=</span> nodes<span class="sc">$</span>AGE</span>
+<span id="cb71-2"><a href="#cb71-2"></a><span class="fu">V</span>(advise)<span class="sc">$</span>tenure <span class="ot">=</span> nodes<span class="sc">$</span>TENURE</span>
+<span id="cb71-3"><a href="#cb71-3"></a><span class="fu">V</span>(advise)<span class="sc">$</span>level  <span class="ot">=</span> nodes<span class="sc">$</span>LEVEL</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that the attribute data has managers age (in years), length of service or tenure (in years), level in the corporate hierarchy (coded 1,2 and 3; 1=CEO, 2 = Vice President, 3 = manager)</p>
+</section><section id="reading-two-mode-data" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="reading-two-mode-data">
+<span class="header-section-number">2.6</span> Reading two mode data</h2>
+<p>Two-mode or bipartite graphs have two different types of actors and links that go across, but not within each type. Our second media example is a network of that kind, examining links between news sources and their consumers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>nodes2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/Dataset2-Media-User-Example-NODES.csv"</span>, <span class="at">header=</span>T, <span class="at">as.is=</span>T)</span>
+<span id="cb72-2"><a href="#cb72-2"></a>links2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/Dataset2-Media-User-Example-EDGES.csv"</span>, <span class="at">header=</span>T, <span class="at">row.names=</span><span class="dv">1</span>)</span>
+<span id="cb72-3"><a href="#cb72-3"></a></span>
+<span id="cb72-4"><a href="#cb72-4"></a><span class="fu">head</span>(nodes2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">media</th>
+<th style="text-align: right;">media.type</th>
+<th style="text-align: left;">media.name</th>
+<th style="text-align: right;">audience.size</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: left;">NYT</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s02</td>
+<td style="text-align: left;">WaPo</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s03</td>
+<td style="text-align: left;">WSJ</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s04</td>
+<td style="text-align: left;">USAT</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s05</td>
+<td style="text-align: left;">LATimes</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Newspaper</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s06</td>
+<td style="text-align: left;">CNN</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">TV</td>
+<td style="text-align: right;">56</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="fu">head</span>(links2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">U01</th>
+<th style="text-align: right;">U02</th>
+<th style="text-align: right;">U03</th>
+<th style="text-align: right;">U04</th>
+<th style="text-align: right;">U05</th>
+<th style="text-align: right;">U06</th>
+<th style="text-align: right;">U07</th>
+<th style="text-align: right;">U08</th>
+<th style="text-align: right;">U09</th>
+<th style="text-align: right;">U10</th>
+<th style="text-align: right;">U11</th>
+<th style="text-align: right;">U12</th>
+<th style="text-align: right;">U13</th>
+<th style="text-align: right;">U14</th>
+<th style="text-align: right;">U15</th>
+<th style="text-align: right;">U16</th>
+<th style="text-align: right;">U17</th>
+<th style="text-align: right;">U18</th>
+<th style="text-align: right;">U19</th>
+<th style="text-align: right;">U20</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">s01</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s03</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s04</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">s05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">s06</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Note that the matrix “links2” is an adjacency matrix for a two-mode network, also known as an incidence matrix.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>net2 <span class="ot">&lt;-</span> <span class="fu">graph_from_incidence_matrix</span>(links2)</span>
+<span id="cb74-2"><a href="#cb74-2"></a><span class="fu">table</span>(<span class="fu">V</span>(net2)<span class="sc">$</span>type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+FALSE  TRUE 
+   10    20 </code></pre>
+</div>
+</div>
+<p>We can also easily generate bipartite projections for the two-mode network: (co-memberships are easy to calculate by multiplying the network matrix by its transposed matrix, or using igraph’s bipartite.projection() function).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>net2.bp <span class="ot">&lt;-</span> <span class="fu">bipartite.projection</span>(net2)</span>
+<span id="cb76-2"><a href="#cb76-2"></a>net2.bp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$proj1
+IGRAPH 2f62974 UNW- 10 12 -- 
++ attr: name (v/c), weight (e/n)
++ edges from 2f62974 (vertex names):
+ [1] s01--s10 s02--s09 s03--s09 s03--s04 s04--s05 s04--s10 s05--s10 s05--s06
+ [9] s06--s07 s06--s08 s07--s08 s08--s09
+
+$proj2
+IGRAPH 2f629c5 UNW- 20 34 -- 
++ attr: name (v/c), weight (e/n)
++ edges from 2f629c5 (vertex names):
+ [1] U01--U02 U01--U03 U01--U11 U02--U03 U04--U05 U04--U20 U05--U20 U06--U07
+ [9] U06--U08 U06--U09 U06--U19 U06--U20 U07--U08 U07--U09 U08--U09 U09--U10
+[17] U09--U11 U10--U11 U11--U12 U11--U13 U12--U13 U13--U14 U13--U17 U14--U17
+[25] U14--U15 U14--U16 U15--U16 U16--U17 U16--U18 U16--U19 U17--U18 U17--U19
+[33] U18--U19 U19--U20</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="fu">plot</span>(net2.bp<span class="sc">$</span>proj1, <span class="at">vertex.label.color=</span><span class="st">"black"</span>, <span class="at">vertex.label.dist=</span><span class="dv">1</span>,</span>
+<span id="cb78-2"><a href="#cb78-2"></a><span class="at">vertex.size=</span><span class="dv">7</span>, <span class="at">vertex.label=</span>nodes2<span class="sc">$</span>media[<span class="sc">!</span><span class="fu">is.na</span>(nodes2<span class="sc">$</span>media.type)], <span class="at">asp=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="fu">plot</span>(net2.bp<span class="sc">$</span>proj2, <span class="at">vertex.label.color=</span><span class="st">"black"</span>, <span class="at">vertex.label.dist=</span><span class="dv">1</span>,</span>
+<span id="cb79-2"><a href="#cb79-2"></a><span class="at">vertex.size=</span><span class="dv">7</span>, <span class="at">vertex.label=</span>nodes2<span class="sc">$</span>media[<span class="fu">is.na</span>(nodes2<span class="sc">$</span>media.type)], <span class="at">asp=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-30-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section><section id="selecting-subgraphs" class="level2" data-number="2.7"><h2 data-number="2.7" class="anchored" data-anchor-id="selecting-subgraphs">
+<span class="header-section-number">2.7</span> Selecting subgraphs</h2>
+<p>The preceding sections covered the basic information needed to create, read and manage network data objects in R. However, the data managements tasks for network analysis do not end there. There are any number of network analytic challenges that will require more sophisticated data management and transformation techniques.</p>
+<p>In the rest two such examples are covered: preparing subsets of network data for analysis by filtering on node and edge characteristics, and turning directed networks into non-directed networks.</p>
+<section id="filtering-based-on-node-values" class="level3" data-number="2.7.1"><h3 data-number="2.7.1" class="anchored" data-anchor-id="filtering-based-on-node-values">
+<span class="header-section-number">2.7.1</span> filtering based on node values</h3>
+<p>If a network object contains node characteristics, stored as vertex attributes, this information can be used to select a new subnetwork for analysis. In our example about news above, we have information about the type of media and audience size.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="fu">V</span>(net)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+ 17/17 vertices, named, from 2ee6cb2:
+ [1] s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 s11 s12 s13 s14 s15 s16 s17</code></pre>
+</div>
+</div>
+<p>Suppose that we are only interested in relations between newspapers. Using the <code>induced.subgraph</code> command it is easy to select a subset of vertices and their relations. Note that we could als have used other attributes, such as audience size (should we be interested in larger organzations for instance).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a>news<span class="ot">&lt;-</span><span class="fu">induced.subgraph</span>(net, <span class="at">vids=</span><span class="fu">which</span>(<span class="fu">V</span>(net)<span class="sc">$</span>media.type<span class="sc">==</span><span class="dv">1</span>))</span>
+<span id="cb82-2"><a href="#cb82-2"></a><span class="fu">plot</span>(news,<span class="at">vertex.size=</span><span class="dv">8</span>, <span class="at">vertex.label =</span> <span class="fu">V</span>(news)<span class="sc">$</span>media, <span class="at">edge.arrow.size=</span><span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a>news</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>IGRAPH 2fa3c9b DNW- 6 12 -- 
++ attr: name (v/c), media (v/c), media.type (v/n), type.label (v/c),
+| audience.size (v/n), weight (e/n), type (e/c)
++ edges from 2fa3c9b (vertex names):
+ [1] s01-&gt;s02 s01-&gt;s03 s01-&gt;s04 s02-&gt;s01 s02-&gt;s03 s03-&gt;s01 s03-&gt;s04 s03-&gt;s05
+ [9] s04-&gt;s03 s04-&gt;s06 s05-&gt;s01 s05-&gt;s02</code></pre>
+</div>
+</div>
+<p>Note that for the plot of the subgraph, we use the attributes of the subgraph as well (not the original)</p>
+</section><section id="filtering-based-on-edge-values" class="level3" data-number="2.7.2"><h3 data-number="2.7.2" class="anchored" data-anchor-id="filtering-based-on-edge-values">
+<span class="header-section-number">2.7.2</span> Filtering Based on Edge Values</h3>
+<p>Selecting edges is less common, but can be useful. In Igraph the procedure is a bit different, since the “subgraph.edges” is used. It should include a sequence of edge ids. In the code below first a a vector <strong>d</strong> is created consisting of logical statements (TRUE if the weight attribute is larger than 10 or else FALSE). The <strong>v</strong> vector</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a>d<span class="ot">=</span><span class="fu">E</span>(net)<span class="sc">$</span>weight<span class="sc">&gt;</span><span class="dv">10</span></span>
+<span id="cb85-2"><a href="#cb85-2"></a>d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE
+[13] FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE
+[25]  TRUE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE
+[37]  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE</code></pre>
+</div>
+</div>
+<p>The <strong>v</strong> vector is a count that runs from 1 to the number of edges (which is counted by the ecount command). The vector <strong>g</strong> contains those edge ids that have a weight larger than 10.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a>v <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ecount</span>(net))</span>
+<span id="cb87-2"><a href="#cb87-2"></a>g<span class="ot">&lt;-</span>v[d<span class="sc">==</span><span class="cn">TRUE</span>] <span class="co">#is edge &gt; 10</span></span>
+<span id="cb87-3"><a href="#cb87-3"></a>net3 <span class="ot">&lt;-</span> <span class="fu">subgraph.edges</span>(net, g, <span class="at">delete.vertices =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb87-4"><a href="#cb87-4"></a>net3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>IGRAPH 2fcf9ee DNW- 17 25 -- 
++ attr: name (v/c), media (v/c), media.type (v/n), type.label (v/c),
+| audience.size (v/n), weight (e/n), type (e/c)
++ edges from 2fcf9ee (vertex names):
+ [1] s01-&gt;s03 s01-&gt;s04 s01-&gt;s15 s02-&gt;s01 s02-&gt;s03 s03-&gt;s01 s03-&gt;s04 s04-&gt;s03
+ [9] s04-&gt;s11 s05-&gt;s02 s05-&gt;s15 s06-&gt;s16 s06-&gt;s17 s07-&gt;s08 s07-&gt;s10 s08-&gt;s07
+[17] s08-&gt;s09 s09-&gt;s10 s12-&gt;s13 s12-&gt;s14 s13-&gt;s12 s14-&gt;s13 s15-&gt;s01 s16-&gt;s06
+[25] s16-&gt;s17</code></pre>
+</div>
+</div>
+</section><section id="removing-isolates" class="level3" data-number="2.7.3"><h3 data-number="2.7.3" class="anchored" data-anchor-id="removing-isolates">
+<span class="header-section-number">2.7.3</span> removing isolates</h3>
+<p>A common filtering task with networks is to examine the network after removing all the isolates (i.e., nodes with degree of 0).</p>
+<p>To illustrate we use the first organizational network collected, consisting of observational data on 14 Western Electric (Hawthorne Plant) employees from the bank wiring room first presented in Roethlisberger &amp; Dickson (1939).</p>
+<p>The employees worked in a single room and include two inspectors (I1 and I3), three solderers (S1, S2 and S3), and nine wiremen or assemblers (W1 to W9). There were five interaction categories, we focus on participation in arguments about open windows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a>Initial.matrix <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/RDCON.csv"</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">row.names=</span><span class="dv">1</span>, <span class="at">check.names=</span><span class="cn">FALSE</span>, <span class="at">na.strings =</span> <span class="st">""</span>)</span>
+<span id="cb89-2"><a href="#cb89-2"></a>matrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(Initial.matrix) </span>
+<span id="cb89-3"><a href="#cb89-3"></a>RDCON <span class="ot">&lt;-</span> <span class="fu">graph.adjacency</span>(matrix, <span class="at">mode=</span><span class="st">"undirected"</span>, <span class="at">weighted=</span><span class="cn">NULL</span>)</span>
+<span id="cb89-4"><a href="#cb89-4"></a><span class="fu">plot</span>(RDCON, <span class="at">asp=</span><span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="1_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The first method is to simply find all the vertices without a connection (degree = 0), and remove them.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a>d <span class="ot">&lt;-</span> <span class="fu">degree</span>(RDCON)</span>
+<span id="cb90-2"><a href="#cb90-2"></a>de <span class="ot">&lt;-</span> <span class="fu">delete.vertices</span>(RDCON, (d<span class="sc">==</span><span class="dv">0</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The second method is to first detect the main component (connected subgraph), and select this component. Downside is that there maybe more components that may also be of interest, so use this only in case you are only interested in the main component.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a>m <span class="ot">&lt;-</span> <span class="fu">components</span>(RDCON)</span>
+<span id="cb91-2"><a href="#cb91-2"></a>m<span class="ot">&lt;-</span><span class="fu">unlist</span>(m<span class="sc">$</span>membership)</span>
+<span id="cb91-3"><a href="#cb91-3"></a>Main_component_RDCON <span class="ot">&lt;-</span> <span class="fu">induced.subgraph</span>(RDCON, <span class="at">vids=</span><span class="fu">which</span>(m<span class="sc">==</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="exercise-part-one" class="level2" data-number="2.8"><h2 data-number="2.8" class="anchored" data-anchor-id="exercise-part-one">
+<span class="header-section-number">2.8</span> Exercise part one</h2>
+<p>We will discuss these exercises in the next meeting, you dont have to hand them in.</p>
+<ol type="1">
+<li><p>Create a graph of your core network, and plot that network. Include relations between your contacts. You can use abbreviations for the names.</p></li>
+<li><p>Add additional information (age or gender) to the igraph object.</p></li>
+<li><p>What is the density of your core network? Density captures how many edges there are in a network divided by the total possible number of edges. In an undirected network of size N, there will be (N * (N-1))/2 possible edges. If you think back to the matrix underlying each network, N * N-1 refers to the number of rows (respondents) times the number of columns (respondents again) minus 1 so that the diagonal (i.e.&nbsp;ties to oneself) are excluded. We divide that number by 2 in the case of an undirected network only to account for that fact that the network is symmetrical.</p></li>
+<li><p>Enter the “attiro.csv” network into R and create an Igraph object.</p></li>
+<li><p>Are there multiple relations and self-loops? If so, Which relations and/or loops?</p></li>
+<li><p>Are there isolates? If so, remove this/these isolate(s).</p></li>
+<li><p>Consider the following edgelist (MM_edges1.csv) and nodes attributes (MM_Nodes.csv). This network concerns the diffusion of a new mathematics method in the 1950s. The diffusion process was successful since the new method was adopted in a relatively short period by most schools. The example traces the diffusion of the modern math method among school systems which combine elementary and secondary programs in Allegheny County (Pennsylvania, USA). All school superintendents who were at least two years in office were interviewed. They are the gatekeepers to educational innovation because they are in the position to make the final decision. The superintendents were asked to indicate their friendship ties with other superintendents in the county with the following question: Among the chief school administrators in Allegheny County, who are your three best friends? The year of adoption by a superintendent’s school is coded in the partition ModMath_adoption.clu: 1958 is class (time) one, 1959 is class (time) two, etc. Enter the data in R. Plot the network.</p></li>
+<li><p>Select the early adopters (first two years), plot this subgraph.</p></li>
+</ol>
+
+
+</section></main><!-- /main --><script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+// open rdrr links externally ----
+
+var exlinks = document.querySelectorAll("a[href^='https://rdrr.io']");
+var exlink_func = function(){
+  window.open(this.href);
+  return false;
+};
+for (var i = 0; i < exlinks.length; i++) {
+    exlinks[i].addEventListener('click', exlink_func, false);
+}
+
+// visible second sidebar in mobile ----
+
+function move_sidebar() {
+  var toc = document.getElementById("TOC");
+  var small_sidebar = document.querySelector("#quarto-sidebar .sidebar-menu-container");
+  var right_sidebar = document.getElementById("quarto-margin-sidebar");
+
+  if (window.innerWidth < 768) {
+    small_sidebar.append(toc);
+  } else {
+    right_sidebar.append(toc);
+  }
+}
+move_sidebar();
+window.onresize = move_sidebar;
+</script><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview: Social Network Analysis (0HV80)</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Social network basics</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">CC-BY (2023) Me</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+</body></html>

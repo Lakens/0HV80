@@ -1,0 +1,14 @@
+{
+  "hash": "41d1c36bb352f7e88c867399a6401b19",
+  "result": {
+    "markdown": "---\ntitle: \"Overview: Social Network Analysis (0HV80)\"\nauthor: \"Gerrit Rooks\"\noutput: \n  html_document:\n    toc: true\n    toc_float: true\n    theme: readable\n    number_sections: true\ncode_download: true\n---\n\n\n\n::: {.cell}\n\n:::\n\n\nThese notes accompany the social network analysis part of the 0HV80 course and provide an overview of the basic skills needed to network data into informative summaries and visualizations presented in professional reports and presentations. The notes will introduce learners to the R packages `igraph` and `netdiffuseR`). The notes will cover importing and processing data from spreadsheets, producing data summaries of the network, creating beautiful and informative visualizations, and simulating network diffusion. In addition to the technical aspects of social network analysis, the notes provide additional theoretical background and mechanisms that help understanding how networks \"work\".\n\nBy the end of these notes, you will be able to use R to:\n\n- create networks\n- import networks \n- clean and process data\n- informatively visualize networks\n- calculate differences in network position \n- calculate cohesion measures\n- simulate network diffusion \n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.310">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="description" content="Book Description">
+<title>Book Template - 6&nbsp; Rationalization: Diffusion networks</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./4.html" rel="prev">
+<link href="./images/logos/logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/glossary.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rationalization: Diffusion networks</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Book Template</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Book-Template.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Book-Template.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+</div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=%7Curl%7C">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=%7Curl%7C">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=%7Curl%7C">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+</div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview: Social Network Analysis (0HV80)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Social computing using R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Social network basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inequality and network position</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Social Cohesion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rationalization: Diffusion networks</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#network-inverventions" id="toc-network-inverventions" class="nav-link active" data-scroll-target="#network-inverventions"><span class="header-section-number">6.1</span> Network inverventions</a></li>
+  <li>
+<a href="#simulating-network-diffusion-in-r" id="toc-simulating-network-diffusion-in-r" class="nav-link" data-scroll-target="#simulating-network-diffusion-in-r"><span class="header-section-number">6.2</span> Simulating network diffusion in R</a>
+  <ul class="collapse">
+<li><a href="#random-graph" id="toc-random-graph" class="nav-link" data-scroll-target="#random-graph"><span class="header-section-number">6.2.1</span> random graph</a></li>
+  </ul>
+</li>
+  <li><a href="#simulating-diffussion-in-an-actual-network" id="toc-simulating-diffussion-in-an-actual-network" class="nav-link" data-scroll-target="#simulating-diffussion-in-an-actual-network"><span class="header-section-number">6.3</span> Simulating diffussion in an actual network</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">6.4</span> Exercise</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Rationalization: Diffusion networks</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><p><font size="2"> <em>“I’m convinced that ideas and behaviors and new products move through a population very much like a disease does.”</em> Malcolm Gladwell</font></p>
+<p><em>“Ninety-nine percent of the people in the world are fools and the rest of us are in great danger of contagion.”</em> Thornton Wilder</p>
+<p><em>“Misinformation or distrust of vaccines can be like a contagion that can spread as fast as measles.”</em> Theresa Tam </p>
+<p>As we discussed in the lecture, in diffusion of innovation theory the social system is an important element. New ideas often enter communities from external sources, adoption of those ideas then flows through interpersonal contact networks.</p>
+<p>In this part of the course we discuss how a network can be used for policy interventions to speed up diffusion processes. To simulate difussion processes we make use of the <code>netdiffuseR</code> package</p>
+<p>Intended learning outcomes:</p>
+<ul>
+<li>understand the four different approaches to network interventions</li>
+<li>be able to simulate a network diffusion process in a random network</li>
+<li>be able to simulate a network diffusion process in an actual network</li>
+</ul>
+<section id="network-inverventions" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="network-inverventions">
+<span class="header-section-number">6.1</span> Network inverventions</h2>
+<p>The importance of social network influences on behaviors is well established, and the advantages of network approaches to understanding a wide variety of phenomena are clear. There is a accumulated body of evidence that indicates that social networks can be leveraged to accelerate behavior change, improve organizational efficiency, enhance social change, and improve dissemination and diffusion of innovations. In his much article Tom Valente distinguishes four prototypical network interventions.</p>
+<ol type="1">
+<li>
+<strong>Individuals</strong>. In the most basic network intervention, network data are used to identify individuals to act as ‘champions’.</li>
+</ol>
+<ul>
+<li>The most frequent intervention of this type is the use of opinion leaders. Opinion leaders are individuals who exert a significant amount of influence within their network and who can affect the opinions of connected individuals. In social networks opinion leaders are often more central nodes. Note that a direct way to identify opinion leaders is to ask members of a social networks who are most influential.</li>
+<li>Leaders may not always be the best change agents. Leaders have a vested interest in the status quo, whereas bridging individuals (who link non- or loosely connected groups) may be more amenable to change and may be in a better position to change others. For example, when diffusion between groups is expected to be difficult, bridging individuals may be more effective change agents. Bridging individuals may be preferred as change agents when the behavior or policy is controversial or not likely to be well accepted initially. Bridging nodes can be identified as brokers who have many connections to people who are not directly connected or as bridges whose connections maximally increase network cohesion.</li>
+<li>Low-threshold change agents should be recruited when the researcher wants to create early momentumfor the change and accelerate the time to reach a critical mass or tipping point. Low-threshold adopters are individuals willing to adopt a new idea earlier than their peers. Identifying low-threshold adopters as change agents requires some prior knowledge of behavioral adoption of a related innovation.</li>
+</ul>
+<ol start="2" type="1">
+<li>
+<strong>Segmentation</strong>. In contrast to individual approaches in which certain individuals are recruited to be change proponents, segmentation approaches identify groups of people to change at the same time. For example, companies often introduce new procedures at separate locations sequentially rather than having all locations adopt the new procedures simultaneously. In some cases, behavior change is a group decision owing to the interdependent nature of the innovation or behavior change process. People often view themselves as members of a community of practice with established norms and processes that can only change when the whole group changes. For example, a new workflow practice or technology standard may be difficult to adopt unless the entire group agrees to use the system at the same time. Communication technologies such as fax machines, texting, and social networking increase in value as more users adopt the technology or standard. Groups can either be mutually exclusive or “cliques,” which allow for overlapping group membership. Interventions can be delivered to the groups separately or sequentially. A group structure that occurs in many intraorganizational networks is a core-periphery structure in which core members are densely connected to one another and peripheral members are connected to the core but not to each other. Mobilizing networks that have a core-periphery structure may be accomplished by focusing resources on the core members or by ensuring that the coremembers have sufficient resources or diversity to achieve network goals). For example, community coalitions are often composed of hundreds of organizations and/or individuals, yet the core working group may consist of no more than 20 organizations. Understanding who is part of this core and their distribution of assets is critical to coalition success.</li>
+<li>
+<strong>Induction</strong>. Induction interventions stimulate or force peer-to-peer interaction to create cascades in information/behavioral diffusion. Word-of-mouth (WOM) interventions stimulate interpersonal communication to persuade others to adopt the new behavior. Media marketing campaigns are often designed to generate buzz about their products, with the goal of increased sales, and frequently encourage users to recommend products to their friends and family. Often referred to as “going viral,” these interventions do not necessarily use network data, but they depend on the network for their effects. Research has shown that the success of WOM is a function of the network position of initial adopters and the incentives they have to recruit others. In respondent-driven sampling [(RDS), also known as “snowball methods”], individuals recruit others to participate in a study (for instance,a clinical trial) or receive an intervention. In RDS, an initial set of people who are members of the community or population to be influenced are selected and identified as “seeds.” These seeds then recruit members of their social networks who subsequently encourage additional people to participate, and so on. Researchers can use coupons or cards as a means to track who recruited whom. Additionally, researchers must decide on the number of seeds to start with and how many others each seed can be expected to recruit. RDS is quite effective at connecting with hard-to-reach individuals who might not otherwise receive services. This is achieved by initiating recruitment with people who are members of this marginalized group. One of the initial studies applying RDS to the recruitment of injection drug users (IDUs) showed that an unbiased sample of IDUs could be recruited within three to five waves of recruitment. This tactic enables researchers to generalize their study results to a broader group of IDUs and ensures that interventions for IDUs reach everyone they are intended to reach. Adhering consistently to study procedures and protocols over these three to five waves of data collection can be challenging, however. One participant generated more than 100 recruits of varying ethnicity, gender, and place of residence. RDS differs from WOM in that RDS interventions require the seeds to recruit their closely-associated peers, whereas WOM-interventions work by sparking interpersonal communication among any and all social ties. Network outreach is similar to RDS, except that the network seeds recruit members of their personal networks to participate in an intervention together, in which the behavior change messages can be delivered to the entire group. Network outreach is expected to be more effective than individual interventions because the motivations and lessons (such as preparation of healthy food) are delivered in a group context, and the group reinforces the positive behavior change.</li>
+<li>
+<strong>Alteration</strong>. Strategies one through three generally assume a static network (or ignore network dynamics). Many interventions deliberately alter the network to improve efficiency. Three different tactics might be considered: (i) adding/deleting nodes, (ii) adding/ deleting links, or (iii) rewiring existing links.</li>
+</ol>
+<ul>
+<li>Adding nodes is an important and long-standing behavior change approach with outside change agents, expert consultants, and lay health advisors (LHAs) being deployed in many settings to accelerate behavior change. Many studies have used LHAs, who are community members trained in behavior change techniques. These LHAs fan out into the community, often going from door to door, to inform individuals and groups about health and other topics to promote behavior change. LHAs may sometimes work within their existing social networks or approach strangers at their homes, places of business, or in public areas. Politicians and advocacy groups often mount “get out the vote” campaigns consisting of door-to-door appeals, which have been shown to increase voter participation and diffuse to other household members. Support groups, such as Alcoholics Anonymous, are often used to add new people to a person’s network to facilitate behavior change. Node-addition interventions often create connections randomly, yet it is probably preferable to add nodes to the network selectively on the basis of network position. New individuals should be added to a network to bridge disconnected or loosely connected groups.</li>
+<li>Node-deletion interventions remove nodes that occupy critical positions in a network. Nodes are then ranked on the degree to which their removal changes the network statistic. Node-deletion interventions have been embraced by antiterrorist agencies to degrade terrorist network organization. Removing critical nodes from sexual contact networks is an effective way for public health agencies to reduce disease spread and protect communities. In such cases, it is not always physical node removal but rather the use of protective behaviors (such as condom use) that inhibits transmission by the node. Node-deletion interventions change the focus of study from individual behavior to system dynamics in attempts to understand how communities or organizations respond to the removal or alteration of critical nodes.</li>
+<li>Networks can be rewired to increase efficiency or improve performance based on certain goals. For example, teachers often randomize classroom networks so that ability levels are randomly distributed in the network. As with node and link changes, the researcher can also maximize the network on one or several metrics. Watts has suggested that optimal networks are those with short average distances between nodes and a high degree of clustering. These small-world networks maximize bridging and bonding opportunities in the network. Rewiring may be conducted to connect individuals with different attributes (e.g., a buddy system).</li>
+</ul>
+<p>Selecting an appropriate network intervention depends on many factors, including the type and character of available network data, the type of behavior change being promoted, and the environmental or situational context. Network data can be derived from many sources, including archived communications (such as phone, e-mail, text messaging, participant observations, published sources (such as corporate board membership), and survey data.</p>
+<p>Advice networks identify people who are expert and credible sources of information and who usually have considerable technical knowledge about the idea or product. Discussion (and friendship) networks, in contrast, identify relations that are high in trust, mutual understanding, and interpersonal affect in which communication and persuasion flow easily. Discussion relations are mutual and close physically; advice relations are more likely to be asymmetric and distant.</p>
+<p>When barriers to adoption are technical or the innovation is complex, advice networks should be used for the intervention. In contrast,when barriers to adoption are primarily cultural, discussion networks may be more appropriate. Network interventions <strong>should measure different types of networks</strong> using the data for different strategies and tactics.</p>
+<p>Geographic distance also plays a role: Smaller, local organizations will generally rely on trusted peers for information and not depend on geographically distant leaders, because local leaders provide advice that is more sensitive to local conditions and culture. Geographically distant leaders are still quite important, however, and they might have more technical knowledge than local leaders, which would make them valued sources of information.</p>
+<p>In addition to network type, overall network properties influence strategy selection. When network data indicate that the network is nonexistent, too fragmented, too centralized, or otherwise dysfunctional, there is a need for network change. The interventionist should use induction or alteration techniques to create a network amenable to change. Once the network is built or restructured, identification and segmentation tactics can be used to accelerate change. Network structure also matters. For example, a highly centralized network may profit from leader identification tactics, whereas a decentralized<br>
+network will not gain much from using leaders, and instead the analyst must rely on segmentation or induction strategies.</p>
+<p>Characteristics of the behavior being studied also affect intervention choice. A program designed to spread information of a readily accepted idea can rely on easily identified opinion leaders, whereas one that requires complex organizational and personal changes may need dynamic rewiring and/or matching of change agents. Interdependent behaviors are those that increase in value as more people adopt them. For example, Facebook becomes more appealing as more of one’s friends use this social networking site. Interdependent behaviors often have slow initial uptake because there are few advantages to being an early adopter. Thus, interdependent innovations benefit from segmentation strategies, induction matching, or rewiring so that the interdependence can be explicitly addressed.</p>
+<p>Prevalence also affects intervention choice. At high levels of prevalence (greater than 75%), network interventions can be used to find individuals who have not yet adopted the behavior in question, perhaps due to their network position. At low prevalence (less than 15%), network interventions can identify whether early users are leaders and, thus, are well positioned to accelerate behavior spread or whether they are on the periphery and hence likely to be slowly imitated.</p>
+</section><section id="simulating-network-diffusion-in-r" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="simulating-network-diffusion-in-r">
+<span class="header-section-number">6.2</span> Simulating network diffusion in R</h2>
+<p>For the analyses and simulation of diffusion processes, we rely on a package called <code>netdiffuseR</code> which includes built-in functions for simulating diffusion processes. Importantly, this package allows for consideration of both empirical and simulated networks as the starting point. The simulation is done in the following steps:</p>
+<ol type="1">
+<li>Using seed.graph, a baseline graph is created.</li>
+<li>Given the baseline graph, the set of initial adopters is defined using seed.nodes.</li>
+<li>Afterwards, if rewire=TRUE t-1 slices of the network are created by iteratively rewiring the baseline graph.</li>
+<li>The <code>threshold.dist</code> function is applied to each node in the graph.</li>
+<li>Simulation starts at t = 2 assigning adopters in each time period accordingly to each vertex’s threshold and exposure.</li>
+</ol>
+<p>These are the main arguments of the function.</p>
+<ul>
+<li><p><strong>n</strong> - The number of nodes to include in the network. This is only needed if a random graph is needed. If you supply a <code>seed.graph</code> (a real network) this argument is not needed.</p></li>
+<li><p><strong>t</strong> - the number of time steps to consider.</p></li>
+<li><p><strong>seed.graph</strong> - The argument seed.graph can be either a graph itself or a character scalar in which the user sets the algorithm used to generate the first network (network in t=1), this can be either “scale-free” (Barabasi-Albert model using the rgraph_ba function, the default), “bernoulli” (Erdos-Renyi model using the rgraph_er function), or “small-world” (Watts-Strogatz model using the rgraph_ws function). When you set an algorithm you need to provide arguments for the algorithm. The list <code>rgraph.args' passes those arguments to the chosen algorithm (see</code>rgraph.ba<code>,</code>rgraph.ws<code>, or</code>rgraph.er<code>in the manual). The</code>rgraph.args’ is not needed when you work with an actual graph.</p></li>
+<li><p><strong>seed.nodes</strong> - This argument can be set to either marginal, central, or random and this refers to the positions of the initial nodes to be “infected” or “adopters” in the network model. These options will select nodes with either the lowest degree, highest degree, or randomly respectively. Alternatively, you can supply a vector of node numbers representing the nodes which should be adopters in time step 1.</p></li>
+<li><p><strong>seed.p.adopt</strong> - This is the proportion of nodes that will be initial adopters/infected.</p></li>
+<li><p><strong>rewire</strong> - This logical argument expects a TRUE or FALSE. If TRUE at each time step a number of edges will be reassigned at random based on additional options passed to the rewire.args argument. Note that this argument is TRUE by default.</p></li>
+<li><p><strong>threshold.dist</strong> - This argument expects either a function or a vector of length n that defines the adoption threshold (susceptibility) of each node.</p></li>
+</ul>
+<p>As we will see below, we do not need to use all of these arguments in every network simulation. Reading the documentation of the <code>rdiffnet</code> package provides additional details on options described briefly here.</p>
+<p>One important concept that needs to be formally defined before we move on is the network threshold (defined in relationship to <span class="math inline">\(\tau\)</span> or threshold.dist). This is equal to the proportion of neighbors who need to be adopters for the target to adopt. So if <span class="math inline">\(\tau\)</span> equals .25, at least three out of four neighbors need to adopt before target adopts.</p>
+<section id="random-graph" class="level3" data-number="6.2.1"><h3 data-number="6.2.1" class="anchored" data-anchor-id="random-graph">
+<span class="header-section-number">6.2.1</span> random graph</h3>
+<p>In most applications this is randomly varied (like in the examples below), however it is possible to specify various thresholds for different actors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(netdiffuseR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'netdiffuseR'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    recode</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:base':
+
+    %*%</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">set.seed</span>(<span class="dv">4436</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>net_test1 <span class="ot">&lt;-</span> <span class="fu">rdiffnet</span>(</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="at">n =</span> <span class="dv">1000</span>,</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="at">t =</span> <span class="dv">20</span>,</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="at">seed.nodes =</span> <span class="st">"random"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="at">seed.p.adopt =</span> <span class="fl">0.001</span>,</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="at">seed.graph =</span> <span class="st">"small-world"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="at">rgraph.args =</span> <span class="fu">list</span>(<span class="at">p =</span> <span class="fl">0.1</span>),</span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="at">threshold.dist =</span> <span class="cf">function</span> (x) <span class="fu">runif</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>)</span>
+<span id="cb5-10"><a href="#cb5-10"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in (function (graph, p, algorithm = "endpoints", both.ends = FALSE, :
+The option -copy.first- is set to TRUE. In this case, the first graph will be
+treated as a baseline, and thus, networks after T=1 will be replaced with T-1.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">summary</span>(net_test1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Diffusion network summary statistics
+Name     : A diffusion network
+Behavior : Random contagion
+-----------------------------------------------------------------------------
+ Period   Adopters   Cum Adopt. (%)   Hazard Rate   Density   Moran's I (sd)  
+-------- ---------- ---------------- ------------- --------- ---------------- 
+       1          1         1 (0.00)             -      0.00 -0.00 (0.00)     
+       2          4         5 (0.00)          0.00      0.00  0.10 (0.01) *** 
+       3          6        11 (0.01)          0.01      0.00  0.16 (0.01) *** 
+       4          9        20 (0.02)          0.01      0.00  0.18 (0.01) *** 
+       5         13        33 (0.03)          0.01      0.00  0.18 (0.01) *** 
+       6         25        58 (0.06)          0.03      0.00  0.20 (0.01) *** 
+       7         39        97 (0.10)          0.04      0.00  0.24 (0.01) *** 
+       8         71       168 (0.17)          0.08      0.00  0.19 (0.01) *** 
+       9        124       292 (0.29)          0.15      0.00  0.20 (0.01) *** 
+      10        167       459 (0.46)          0.24      0.00  0.21 (0.01) *** 
+      11        197       656 (0.66)          0.36      0.00  0.18 (0.01) *** 
+      12        186       842 (0.84)          0.54      0.00  0.16 (0.01) *** 
+      13        111       953 (0.95)          0.70      0.00  0.10 (0.01) *** 
+      14         41       994 (0.99)          0.87      0.00  0.03 (0.01) *** 
+      15          6      1000 (1.00)          1.00      0.00               -  
+      16          0      1000 (1.00)          0.00      0.00               -  
+      17          0      1000 (1.00)          0.00      0.00               -  
+      18          0      1000 (1.00)          0.00      0.00               -  
+      19          0      1000 (1.00)          0.00      0.00               -  
+      20          0      1000 (1.00)          0.00      0.00               -  
+-----------------------------------------------------------------------------
+ Left censoring  : 0.00 (1)
+ Right centoring : 0.00 (0)
+ # of nodes      : 1000
+
+ Moran's I was computed on contemporaneous autocorrelation using 1/geodesic
+ values. Significane levels  *** &lt;= .01, ** &lt;= .05, * &lt;= .1.</code></pre>
+</div>
+</div>
+<p>In this example, we have created a random network with 1000 nodes and small world structure. We examine the network across 20 time steps. We send a value of 0.1 to the rgraph.args argument meaning that proportion of ties will be rewired in the random graph to generate “small-world” structure (see <code>rgaph_ws</code> for more info) in the initial network configuration. We set the initial adopters in the network to 0.001 or a single node in this 1000 node network. Finally, we set the threshold.dist to be a random uniform number (using the <code>runif</code> function) between 0.1 and 0.5 meaning that a node will adopt the contagion at a given time step if between 10% and 50% of it’s neighbors have adopted. Note that we have not set a value for rewire so by default this is TRUE and a small proportion of edges will be rewired at each time step.</p>
+<p>The summary output provides information on the number of adopters and the cumulative adoption percent at each time step. We also have information on the hazard rate, which is the probability that a given node will be infected/adopt at each step.</p>
+<pre><code>The Moran’s I is a measure of autocorrelation which here is sued to indicate whether infected nodes/adopters are concentrated among neighbors in the network (nodes that share an edge). Not surprisingly, we see they are across all but the first time step. Moran's I is not exam material, no need to memorize this.</code></pre>
+<p>The <code>netdiffuseR</code> package also has built in functions for plotting. First, let’s plot our simulated network at a few different time steps to see the distributions of adopters and non-adopters. Here we plot the 1st, 10th, and 15th time steps:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">plot_diffnet</span>(net_test1, <span class="at">slices =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="5_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">plot_adopters</span>(net_test1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="5_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can also plot a network that shows the time step at which each node adopted the contagion:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">plot_diffnet2</span>(net_test1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="5_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section></section><section id="simulating-diffussion-in-an-actual-network" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="simulating-diffussion-in-an-actual-network">
+<span class="header-section-number">6.3</span> Simulating diffussion in an actual network</h2>
+<p>The above example is a pure simulation, with a random graph as the starting point. <code>rdiffnet</code> allows us to use a real world network to simulate a diffusion process. For our purposes this is more interesting. Reading the data has been discussed before and is straightforward. We use the (symmetrized) data that we used to discuss visualization earlier in the course (organizational network of 21 managers). We focus on information exchange relationships (one or both of the actors in a relation provides the other with advice).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>Initial.matrix <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/Krack-High-Tec-Advise-edges.csv"</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">row.names=</span><span class="dv">1</span>, <span class="at">check.names=</span><span class="cn">FALSE</span>, <span class="at">na.strings =</span> <span class="st">""</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>matrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(Initial.matrix) </span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">#symmetrize the matrix</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>matrix<span class="ot">=</span>matrix<span class="sc">+</span><span class="fu">t</span>(matrix)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>matrix[matrix<span class="sc">==</span><span class="dv">2</span>]<span class="ot">&lt;-</span><span class="dv">1</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>nodes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">"data/Krackh-High-Tec-nodes2.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now use the adjacency matrix as the seed graph (after symmetrizing). Again the thresholds are random. To help interpret the visualization of the diffusion process, we use the names of the managers as provided in the nodes file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>n<span class="ot">=</span>nodes<span class="sc">$</span>names</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">set.seed</span>(<span class="dv">4436</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a>net_test2 <span class="ot">&lt;-</span> <span class="fu">rdiffnet</span>(</span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="at">t =</span> <span class="dv">10</span>,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="at">seed.nodes =</span> <span class="st">"random"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="at">seed.p.adopt =</span> <span class="fl">0.1</span>,</span>
+<span id="cb14-7"><a href="#cb14-7"></a>  <span class="at">seed.graph =</span> matrix,</span>
+<span id="cb14-8"><a href="#cb14-8"></a>  <span class="at">rewire=</span><span class="cn">FALSE</span>,</span>
+<span id="cb14-9"><a href="#cb14-9"></a>  <span class="at">threshold.dist =</span> <span class="cf">function</span> (x) <span class="fu">runif</span>(<span class="dv">1</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>)</span>
+<span id="cb14-10"><a href="#cb14-10"></a>)</span>
+<span id="cb14-11"><a href="#cb14-11"></a></span>
+<span id="cb14-12"><a href="#cb14-12"></a><span class="fu">summary</span>(net_test2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Diffusion network summary statistics
+Name     : A diffusion network
+Behavior : Random contagion
+-----------------------------------------------------------------------------
+ Period   Adopters   Cum Adopt. (%)   Hazard Rate   Density   Moran's I (sd)  
+-------- ---------- ---------------- ------------- --------- ---------------- 
+       1          2         2 (0.10)             -      0.69 -0.06 (0.01)     
+       2          2         4 (0.19)          0.11      0.69 -0.04 (0.02)     
+       3         14        18 (0.86)          0.82      0.69 -0.03 (0.02)     
+       4          3        21 (1.00)          1.00      0.69               -  
+       5          0        21 (1.00)          0.00      0.69               -  
+       6          0        21 (1.00)          0.00      0.69               -  
+       7          0        21 (1.00)          0.00      0.69               -  
+       8          0        21 (1.00)          0.00      0.69               -  
+       9          0        21 (1.00)          0.00      0.69               -  
+      10          0        21 (1.00)          0.00      0.69               -  
+-----------------------------------------------------------------------------
+ Left censoring  : 0.10 (2)
+ Right centoring : 0.00 (0)
+ # of nodes      : 21
+
+ Moran's I was computed on contemporaneous autocorrelation using 1/geodesic
+ values. Significane levels  *** &lt;= .01, ** &lt;= .05, * &lt;= .1.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">plot_diffnet</span>(net_test2, <span class="at">slices =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">vertex.label=</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="5_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">plot_diffnet</span>(net_test2, <span class="at">slices =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="at">vertex.label=</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="5_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The selection of early adopters (nodes that are first to adopt the innovation) is random in this simulation. So is the selection of thresholds. A threshold of 1 in the model implies that an actor only then adopts if 100% of the neighbors adopt as well. In the continuation we select two actors who start the diffusion process. We also assume that older employees are less innovative, so the treshold is not random anymore.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># we must ensure that the thresholds (based on age) are between 0 (% neighbors #needed to adopt) and 1 (all neighbors must adopt before actor adopts)</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a>age<span class="ot">=</span>nodes<span class="sc">$</span>AGE</span>
+<span id="cb18-4"><a href="#cb18-4"></a>age<span class="ot">&lt;-</span>age<span class="sc">/</span><span class="fu">max</span>(age)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>age<span class="ot">&lt;-</span>age<span class="sc">-</span><span class="fu">min</span>(age)</span>
+<span id="cb18-6"><a href="#cb18-6"></a>age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.09677419 0.24193548 0.20967742 0.09677419 0.08064516 0.51612903
+ [7] 0.45161290 0.11290323 0.56451613 0.16129032 0.30645161 0.11290323
+[13] 0.33870968 0.25806452 0.20967742 0.00000000 0.04838710 0.09677419
+[19] 0.08064516 0.17741935 0.14516129</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">set.seed</span>(<span class="dv">4436</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a>net_test2 <span class="ot">&lt;-</span> <span class="fu">rdiffnet</span>(</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="at">t =</span> <span class="dv">10</span>,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="at">seed.nodes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">18</span>),</span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="at">seed.graph =</span> matrix,</span>
+<span id="cb20-6"><a href="#cb20-6"></a>  <span class="at">rewire=</span><span class="cn">FALSE</span>,</span>
+<span id="cb20-7"><a href="#cb20-7"></a>  <span class="at">threshold.dist =</span> age)</span>
+<span id="cb20-8"><a href="#cb20-8"></a></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="fu">summary</span>(net_test2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Diffusion network summary statistics
+Name     : A diffusion network
+Behavior : Random contagion
+-----------------------------------------------------------------------------
+ Period   Adopters   Cum Adopt. (%)   Hazard Rate   Density   Moran's I (sd)  
+-------- ---------- ---------------- ------------- --------- ---------------- 
+       1          2         2 (0.10)             -      0.69 -0.05 (0.01)     
+       2          6         8 (0.38)          0.32      0.69 -0.04 (0.02)     
+       3         10        18 (0.86)          0.77      0.69 -0.02 (0.02) *   
+       4          3        21 (1.00)          1.00      0.69               -  
+       5          0        21 (1.00)          0.00      0.69               -  
+       6          0        21 (1.00)          0.00      0.69               -  
+       7          0        21 (1.00)          0.00      0.69               -  
+       8          0        21 (1.00)          0.00      0.69               -  
+       9          0        21 (1.00)          0.00      0.69               -  
+      10          0        21 (1.00)          0.00      0.69               -  
+-----------------------------------------------------------------------------
+ Left censoring  : 0.10 (2)
+ Right centoring : 0.00 (0)
+ # of nodes      : 21
+
+ Moran's I was computed on contemporaneous autocorrelation using 1/geodesic
+ values. Significane levels  *** &lt;= .01, ** &lt;= .05, * &lt;= .1.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">plot_diffnet</span>(net_test2, <span class="at">slices =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">vertex.label=</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="5_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">plot_diffnet</span>(net_test2, <span class="at">slices =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="at">vertex.label=</span>n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="5_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">plot_adopters</span>(net_test2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="5_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>And we can plot a network that shows the time step at which each node adopted the contagion, although since the process was quick the plot is not that clear:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">plot_diffnet2</span>(net_test2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="5_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section><section id="exercise" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="exercise">
+<span class="header-section-number">6.4</span> Exercise</h2>
+<ol type="1">
+<li><p>Using the <code>rdiffnet</code> function compare a diffusion process in two random networks (n=100, t=20). Explore whether it matters when you select marginal or central early adopters.</p></li>
+<li><p>Use the friendship network of the Krackhardt data “Krack-High-Tec-Friendship-edges.csv”. Select two central nodes as early adopters, then select two marginal nodes, compare the results of the network diffusion simulation.</p></li>
+<li><p>Using the same model as in question 2, repeat the analysis but assume that threshold depends on tenure.</p></li>
+</ol>
+
+
+</section></main><!-- /main --><script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+// open rdrr links externally ----
+
+var exlinks = document.querySelectorAll("a[href^='https://rdrr.io']");
+var exlink_func = function(){
+  window.open(this.href);
+  return false;
+};
+for (var i = 0; i < exlinks.length; i++) {
+    exlinks[i].addEventListener('click', exlink_func, false);
+}
+
+// visible second sidebar in mobile ----
+
+function move_sidebar() {
+  var toc = document.getElementById("TOC");
+  var small_sidebar = document.querySelector("#quarto-sidebar .sidebar-menu-container");
+  var right_sidebar = document.getElementById("quarto-margin-sidebar");
+
+  if (window.innerWidth < 768) {
+    small_sidebar.append(toc);
+  } else {
+    right_sidebar.append(toc);
+  }
+}
+move_sidebar();
+window.onresize = move_sidebar;
+</script><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./4.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Social Cohesion</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">CC-BY (2023) Me</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+</body></html>
